@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from nasapy import Nasa
-import datetime, threading, webbrowser
+import datetime, threading, webbrowser, sys
 
 AUTHOR = 'NeoCasper AKA VexilonHacker'
 HOST = '0.0.0.0'
@@ -9,6 +9,9 @@ API_FILE = 'nasa.api'
 
 with open(API_FILE, "r") as f:
     nasa_api_key = f.readlines()[0].strip()
+    if nasa_api_key.startswith('YOUR_NASA_API_KEY'):
+        print(f'You need to put your NASA api key in {API_FILE}\nGet your free api from "https://api.nasa.gov/"')
+        sys.exit(1)
 
 nasa = Nasa(key=nasa_api_key)
 app = Flask(__name__)
