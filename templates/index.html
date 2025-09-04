@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NASA APOD Viewer</title> <!-- APOD stabnd for 'Astronomy Picture of the Day' :] -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>🚀 NASA Astronomy Picture of the Day</h1>
+
+        <form id="apod-form" class="apod-form">
+            <label for="date">Select a Date:</label>
+            <div class="form-group">
+                <input type="date" id="date" name="date" value="{{ date }}" />
+                <button type="submit">Get Image</button>
+            </div>
+        </form>
+
+        <div id="loader" class="loader" style="display: none;"></div>
+
+        <div id="apod-container"></div>
+    </div>
+
+    <footer>
+        Made by <h4 style="display: inline;">{{ author }}</h4> using NASA's
+        <a href="https://api.nasa.gov/" target="_blank" rel="noopener noreferrer">Open API</a>.
+    </footer>
+    <script src="{{ url_for('static', filename='apod.js') }}"></script>
+
+</body>
+
+</html>
