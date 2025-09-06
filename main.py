@@ -14,7 +14,7 @@ with open(API_FILE, "r") as f:
         sys.exit(1)
 
 nasa = Nasa(key=nasa_api_key)
-app = Flask(__name__)
+app = Flask(__name__, template_folder='docs')
 
 @app.route('/', methods=["GET", "POST"])
 def index():
